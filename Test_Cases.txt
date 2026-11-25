@@ -1,0 +1,100 @@
+ROMAN NUMERAL CALCULATOR COMPILER — TEST CASES
+===============================================
+
+HOW TO RUN
+-----------
+For each test:
+1. Open input.txt in Notepad.
+2. Paste only the input shown for that test.
+3. Save and close Notepad.
+4. Run: compiler.exe input.txt
+For token tests, run: compiler.exe -tokens input.txt
+
+VALID TEST CASES (5)
+---------------------
+
+TC-V1: Addition
+Input:
+X + V
+
+Expected:
+Integer: 15
+Roman: XV
+
+TC-V2: Subtraction
+Input:
+XX - V
+
+Expected:
+Integer: 15
+Roman: XV
+
+TC-V3: Multiplication
+Input:
+V * IV
+
+Expected:
+Integer: 20
+Roman: XX
+
+TC-V4: Operator precedence
+Input:
+X + X * II
+
+Expected:
+Integer: 30
+Roman: XXX
+
+TC-V5: Parentheses
+Input:
+(X + V) * II
+
+Expected:
+Integer: 30
+Roman: XXX
+
+
+INVALID TEST CASES (3)
+-----------------------
+
+TC-I1: Invalid Roman numeral
+Input:
+IIII
+
+Expected:
+Lexical error: invalid Roman numeral 'IIII' (program stops with an error).
+
+TC-I2: Invalid expression / missing operand
+Input:
+X + * IV
+
+Expected:
+Syntax error reported (program rejects the input).
+
+TC-I3: Unexpected character
+Input:
+X / IV
+
+Expected:
+Lexical error for the unexpected '/' character (program rejects the input).
+
+
+TOKEN LIST TEST
+---------------
+Input:
+X + IV * II
+
+Command:
+compiler.exe -tokens input.txt
+
+Expected tokens:
+ROMAN X
+PLUS +
+ROMAN IV
+MULTIPLY *
+ROMAN II
+
+NOTE
+----
+Run each test separately by replacing the contents of input.txt.
+The current parser processes one expression (or one print-expression statement) at a time.
